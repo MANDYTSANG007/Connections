@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-// Define schema
+// Use the Schema constructor to create a new UserSchema object
 // Add properties and their types
 const userSchema = new mongoose.Schema({
     username: {
@@ -13,13 +13,30 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+        // match email using regex
         match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/],
-    }
+    },
+    // Populate thoughts that associated with the User
+    thoughts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: " Thought "
+        }
+    ],
+    friends: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: " User "
+        }
+    ],
 });
 
 // Use mongoose.model() to compile a user model on the schema
 const User = mongoose.model('User', userSchema);
 
-// Call error handler when an error occurs when saving a document
-const handleError = (err) => console.error(err);
+module.exports = User;
 
+
+//ToDO:
+//work on the schema settings: 
+//Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
