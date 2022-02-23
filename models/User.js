@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // Use the Schema constructor to create a new UserSchema object
 // Add properties and their types
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     username: {
         type: String,
         unique: true,
@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Use mongoose.model() to compile a user model on the schema
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;
 
