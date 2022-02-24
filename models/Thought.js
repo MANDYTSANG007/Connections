@@ -18,10 +18,24 @@ var ThoughtSchema = new schema({
         required: true,
     },
     //array of nested documents created with the reactionSchema
-    reactions:[
-        reactionSchema
-    ],
+    reactions:[reactionSchema],
+},
+{
+    // Transform objects after querying db using toJSON
+    toJSON: {
+        virtuals: true,
+        getters: true,
+    },
+    // Disable id
+    id: false,  
 });
 
-//TODO:
 // Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
+ThoughtSchema.virtual('reactionCount').get(function(){
+    return this.reactions.length;
+});
+
+// Use mongoose.model() to compile a thought model on the schema
+const Thought = mongoose.model('Thought', ThoughtSchema);
+
+module.exports = Thought;

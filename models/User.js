@@ -31,12 +31,15 @@ const UserSchema = new mongoose.Schema({
     ],
 });
 
+// Set up schema
+// Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
+UserSchema.virtual('friendCount').get(function(){
+    return this.friends.length;
+});
+
 // Use mongoose.model() to compile a user model on the schema
 const User = mongoose.model('User', UserSchema);
 
 module.exports = User;
 
 
-//ToDO:
-//work on the schema settings: 
-//Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
