@@ -1,12 +1,40 @@
+// Import models
+const { resolveSoa } = require('dns');
+const { User, Thought } = require('../models');
 
+module.exports = {
+    getAllThoughts(req, res) {
+        Thought.find()
+            .then((thoughts)=> res.json(thoughts))
+            .catch((err) => res.status(500).json(err));
+    },
+    getSingleThought(req, res){
+        Thought.findOne({ _id: req.params.id })
+            .then((thought)=> 
+                !thought
+                    ? res.status(400).json({ message: 'No thought with that ID'})
+                    : res.json(thought)
+            )
+            .catch((err) => res.status(500).json(err));
+    },
+    createThought(req, res){
+        Thought.create(req.body)
+            .then((thought)=> {
+                return User.findOneAndUpdate(
+                    { _id: req.body.userId },
+                    { $push: {thoughts: _id }},
+                    { runValidators: true, new: true }
+                );
+            })
+            .then((thought) =>
+                !thought
+                    ? res.status(400).json({ message: 'No thought with that Id'})
+                    : res.json(thought)
+                )
+            .catch((err)=> res.status(500).json(err));
+    },
 
-
-
-
-
-
-
-
+}
 
 
 
