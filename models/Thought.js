@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
-const { schema } = require('./User');
+const { Schema, model } = require('mongoose')
+const moment = require('moment');
 
 // Set up Reaction, a subdocument schema of Thought
 var ReactionSchema = new schema({
@@ -21,7 +21,7 @@ var ReactionSchema = new schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        //use a getter method to format the timestamp on query
+        get: (date) => moment(date).format("MM-DD-YYYY, hh:mm a"),
     },
 })
 
@@ -35,7 +35,7 @@ var ThoughtSchema = new schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        //use a getter method to format the timestamp on query
+        get: (date) => moment(date).format("MM-DD-YYYY, hh:mm a"),
     },
     username: {
         type: String,
@@ -64,5 +64,3 @@ const Thought = mongoose.model('Thought', ThoughtSchema);
 
 module.exports = Thought;
 
-
-// todo:  use a getter method to format the timestamp on queryx2
