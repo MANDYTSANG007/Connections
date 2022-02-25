@@ -10,7 +10,6 @@ const {
     addFriend,
     deleteFriend,
 } = require('../../controllers/userController');
-const { modelName } = require('../../models/User');
 
 // /api/users
 router.route('/').get(getAllUsers).post(createUser);
