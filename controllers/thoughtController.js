@@ -1,5 +1,4 @@
 // Import models
-const { resolveSoa } = require('dns');
 const { User, Thought } = require('../models');
 
 module.exports = {
