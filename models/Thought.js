@@ -1,13 +1,13 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model, Types } = require('mongoose')
 const moment = require('moment');
 
 // Set up Reaction, a subdocument schema of Thought
-var ReactionSchema = new schema({
+var ReactionSchema = new Schema({
     reactionId: {
         // Use Mongoose's ObjectId data type
         type: Schema.Types.ObjectId,
         // Set default value to a new ObjectId
-        default: new mongoose.Types.ObjectId,
+        default: new Types.ObjectId,
     },
     reactionBody: {
         type: String,
@@ -25,7 +25,7 @@ var ReactionSchema = new schema({
     },
 })
 
-var ThoughtSchema = new schema({
+var ThoughtSchema = new Schema({
     thoughtText: {
         type: String,
         required: true,
@@ -59,8 +59,7 @@ ThoughtSchema.virtual('reactionCount').get(function(){
     return this.reactions.length;
 });
 
-// Use mongoose.model() to compile a thought model on the schema
-const Thought = mongoose.model('Thought', ThoughtSchema);
+const Thought = model('Thought', ThoughtSchema);
 
 module.exports = Thought;
 

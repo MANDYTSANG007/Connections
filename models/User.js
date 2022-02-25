@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const {Schema, model}= require('mongoose');
 
 // Use the Schema constructor to create a new UserSchema object
 // Add properties and their types
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
     username: {
         type: String,
         unique: true,
@@ -29,6 +29,12 @@ const UserSchema = new mongoose.Schema({
             ref: " User "
         }
     ],
+},
+{
+    toJSON:{
+        virtuals: true,
+    },
+    id: false
 });
 
 // Set up schema
@@ -37,8 +43,7 @@ UserSchema.virtual('friendCount').get(function(){
     return this.friends.length;
 });
 
-// Use mongoose.model() to compile a user model on the schema
-const User = mongoose.model('User', UserSchema);
+const User = model('User', UserSchema);
 
 module.exports = User;
 
