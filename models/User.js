@@ -1,8 +1,8 @@
 const {Schema, model}= require('mongoose');
 
-// Use the Schema constructor to create a new UserSchema object
+// Use the Schema constructor to create a new userSchema object
 // Add properties and their types
-const UserSchema = new Schema({
+const userSchema = new Schema({
     username: {
         type: String,
         unique: true,
@@ -16,13 +16,14 @@ const UserSchema = new Schema({
         // match email using regex
         match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/],
     },
-    // Populate thoughts that associated with the User
+    // Populate thoughts that are associated with the User
     thoughts: [
         {
             type: Schema.Types.ObjectId,
             ref: " Thought "
         }
     ],
+    // Populate friends that are associated with the User
     friends: [
         {
             type: Schema.Types.ObjectId,
@@ -39,11 +40,11 @@ const UserSchema = new Schema({
 
 // Set up schema
 // Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
-UserSchema.virtual('friendCount').get(function(){
+userSchema.virtual('friendCount').get(function(){
     return this.friends.length;
 });
 
-const User = model('User', UserSchema);
+const User = model('user', userSchema);
 
 module.exports = User;
 

@@ -1,4 +1,8 @@
 {
+  "scripts": {
+  "seed": "node utils/seed"
+  },
+
   "dependencies": {
     "express": "^4.17.3",
     "moment": "^2.29.1",
