@@ -4,13 +4,16 @@ const { User, Thought } = require('../models');
 module.exports = {
     getAllUsers(req, res) {
         User.find()
-            .then((users)=> res.json(users))
-            .catch((err)=> res.status(500).json(err));
+            .then(
+                (users)=> res.json(users)
+                )
+            .catch(
+                (err)=> res.status(500).json(err)
+                );
     },
     getSingleUser(req, res) {
         User.findOne({ _id: req.params.id })
-            .populate(thought)
-            .populate(friend)
+            .populate({ path: "thoughts", model: Thought})
             .then((user)=>
                 !user
                     ?res
@@ -18,7 +21,8 @@ module.exports = {
                         .json({ message: "No user with that ID"})
                     :res.json(user)
             )
-            .catch((err) => res.status(500).json(err));
+            .catch((err) => 
+            res.status(500).json(err));
     },
     createUser(req, res){
         User.create(req.body)

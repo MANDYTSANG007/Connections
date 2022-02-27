@@ -2,7 +2,7 @@ const { Schema, model, Types } = require('mongoose')
 const moment = require('moment');
 
 // Set up Reaction, a subdocument schema of Thought
-var ReactionSchema = new Schema({
+var reactionSchema = new Schema({
     reactionId: {
         // Use Mongoose's ObjectId data type
         type: Schema.Types.ObjectId,
@@ -25,7 +25,7 @@ var ReactionSchema = new Schema({
     },
 })
 
-var ThoughtSchema = new Schema({
+var thoughtSchema = new Schema({
     thoughtText: {
         type: String,
         required: true,
@@ -42,7 +42,7 @@ var ThoughtSchema = new Schema({
         required: true,
     },
     //array of nested documents created with the reactionSchema
-    reactions:[ReactionSchema],
+    reactions:[reactionSchema],
 },
 {
     // Transform objects after querying db using toJSON
@@ -51,15 +51,15 @@ var ThoughtSchema = new Schema({
         getters: true,
     },
     // Disable id
-    id: false,  
+    //id: false,  
 });
 
 // Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
-ThoughtSchema.virtual('reactionCount').get(function(){
+thoughtSchema.virtual('reactionCount').get(function(){
     return this.reactions.length;
 });
 
-const Thought = model('thought', ThoughtSchema);
+const Thought = model('thought', thoughtSchema);
 
 module.exports = Thought;
 

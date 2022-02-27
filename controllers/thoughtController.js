@@ -22,7 +22,7 @@ module.exports = {
                 return User.findOneAndUpdate(
                     { _id: req.body.userId },
                     { $push: {thoughts: thought._id }},
-                    { runValidators: true, new: true }
+                    { new: true }
                 );
             })
             .then((thought) =>
