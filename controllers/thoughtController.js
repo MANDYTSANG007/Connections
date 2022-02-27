@@ -40,7 +40,7 @@ module.exports = {
     },
     updateThought(req, res){
         Thought.findOneAndUpdate(
-            { _id: req.params.id},
+            { _id: req.params.id}, req.body, {new: true}
         )
             .then((thought)=>
                 !thought
