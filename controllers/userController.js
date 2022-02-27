@@ -31,7 +31,7 @@ module.exports = {
     },
     updateUser(req, res){
         User.findOneAndUpdate(
-            { _id: req.params.id},
+            { _id: req.params.id}, req.body, {new: true}
         )
             .then((user)=>
             !user
@@ -40,7 +40,8 @@ module.exports = {
                     .json({ message: "No user found with that ID"})
                 :res.json(user)
             )
-            .catch((err) => res.status(500).json(err));
+            .catch((err) => 
+            res.status(500).json(err));
     },
     deleteUser(req, res){
         User.findOneAndDelete(
