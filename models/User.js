@@ -32,6 +32,12 @@ const userSchema = new Schema({
         }
     ],
     */
+   friends: [
+        {
+            type: "ObjectId",
+            ref: "user"
+        }
+   ]
 },
 {
     toJSON:{
@@ -42,11 +48,10 @@ const userSchema = new Schema({
 
 // Set up schema
 // Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
-/*
+
 userSchema.virtual('friendCount').get(function(){
-    return this.friends.length;
+    return this.friends ? this.friends.length : 0;
 });
-*/
 
 userSchema.virtual('thoughts', {
     ref: "thought",
