@@ -29,10 +29,11 @@ connection.once('open', async ()=> {
             thoughtText,
         });
 
-        let thought = new Thought({thoughtText});
         let user = new User({username, email});
-        user.thoughts.push(thought);
         let savedUser = await user.save();
+        let thought = new Thought({thoughtText, author: user});
+        let savedThought = await thought.save();
+        //user.thoughts.push(thought);
         console.log(`savedUser = ${savedUser}`);
     }
     // Get some random thought objects using a helper function that we imported from ./data

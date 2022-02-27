@@ -37,9 +37,9 @@ var thoughtSchema = new Schema({
         default: Date.now,
         get: (date) => moment(date).format("MM-DD-YYYY, hh:mm a"),
     },
-    username: {
-        type: String,
-        required: true,
+    author: {
+        type: "ObjectId",
+        ref: "user"
     },
     //array of nested documents created with the reactionSchema
     reactions:[reactionSchema],

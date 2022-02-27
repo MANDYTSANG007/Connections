@@ -16,6 +16,7 @@ const userSchema = new Schema({
         // match email using regex
         //match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/],
     },
+    /*
     // Populate thoughts that are associated with the User
     thoughts: [
         {
@@ -30,6 +31,7 @@ const userSchema = new Schema({
             ref: " User "
         }
     ],
+    */
 },
 {
     toJSON:{
@@ -40,8 +42,16 @@ const userSchema = new Schema({
 
 // Set up schema
 // Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
+/*
 userSchema.virtual('friendCount').get(function(){
     return this.friends.length;
+});
+*/
+
+userSchema.virtual('thoughts', {
+    ref: "thought",
+    foreignField: "author",
+    localField: "_id"
 });
 
 const User = model('user', userSchema);

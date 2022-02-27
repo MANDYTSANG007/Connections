@@ -18,6 +18,7 @@ module.exports = {
     },
     createThought(req, res){
         Thought.create(req.body)
+        /*
             .then((thought)=> {
                 return User.findOneAndUpdate(
                     { _id: req.body.userId },
@@ -30,6 +31,11 @@ module.exports = {
                     ? res.status(400).json({ message: 'No thought with that Id'})
                     : res.json(thought)
                 )
+                */
+            .then((thought) => 
+                thought.populate('author'))
+            .then(thought2 => 
+                res.json(thought2))
             .catch((err)=> res.status(500).json(err));
     },
     updateThought(req, res){
