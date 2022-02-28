@@ -38,17 +38,4 @@ const getRandomThought = (arr) => {
     return results;
 }
 
-//Get a random thought
-// const getRandomUsername = (arr) => {
-//     const results = [];
-//     for (let i=0; i<arr; i++) {
-//         results.push({
-//             thoughts: getRandomArrItem(thoughtText),
-//             username: getRandomUsername().split(' ')[0],
-//             //email: getRandomEmail().split(' ')[0],
-//         });
-//     }
-//     return results;
-// }
-
 module.exports = { getRandomThought, getRandomUsername, getRandomEmail, usernames, emails, thoughts};

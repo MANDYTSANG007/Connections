@@ -16,22 +16,6 @@ const userSchema = new Schema({
         // match email using regex
         match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Please enter a valid email address'],
     },
-    /*
-    // Populate thoughts that are associated with the User
-    thoughts: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: " Thought "
-        }
-    ],
-    // Populate friends that are associated with the User
-    friends: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: " User "
-        }
-    ],
-    */
    friends: [
         {
             type: "ObjectId",
@@ -43,7 +27,6 @@ const userSchema = new Schema({
     toJSON:{
         virtuals: true,
     },
-    //id: false
 });
 
 // Set up schema

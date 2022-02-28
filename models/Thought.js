@@ -3,13 +3,6 @@ const moment = require('moment');
 
 // Set up Reaction, a subdocument schema of Thought
 var reactionSchema = new Schema({
-    /*
-    reactionId: {
-        // Use Mongoose's ObjectId data type
-        type: Schema.Types.ObjectId,
-        // Set default value to a new ObjectId
-        default: new Types.ObjectId,
-    },*/
     reactionBody: {
         type: String,
         required: true,
@@ -50,9 +43,7 @@ var thoughtSchema = new Schema({
     toJSON: {
         virtuals: true,
         getters: true,
-    },
-    // Disable id
-    //id: false,  
+    }, 
 });
 
 // Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.

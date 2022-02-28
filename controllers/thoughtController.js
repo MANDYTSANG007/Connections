@@ -18,20 +18,6 @@ module.exports = {
     },
     createThought(req, res){
         Thought.create(req.body)
-        /*
-            .then((thought)=> {
-                return User.findOneAndUpdate(
-                    { _id: req.body.userId },
-                    { $push: {thoughts: thought._id }},
-                    { new: true }
-                );
-            })
-            .then((thought) =>
-                !thought
-                    ? res.status(400).json({ message: 'No thought with that Id'})
-                    : res.json(thought)
-                )
-                */
             .then((thought) => 
                 thought.populate('author'))
             .then(thought2 => 
@@ -66,20 +52,6 @@ module.exports = {
             { $push: { reactions: req.body } },
             { runValidators: true, new: true }
         )
-        /*
-        Thought.findOne({ _id: req.params.thoughtId })
-        .then((thought0) => {
-            if (thought0) {
-                thought0.reactions.push({
-                    reactionBody: req.body.reactionBody,
-                    author: req.body.author,
-                })
-                return thought0.save();
-            } else {
-                res.status(404).json({ message: 'No thought with that ID'})
-            }
-        })
-        */
         .then((thought)=>
             !thought
                 ?res.status(404).json({ message: 'No thought with that ID'})

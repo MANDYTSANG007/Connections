@@ -22,7 +22,6 @@ connection.once('open', async ()=> {
         const email = emails[i]; 
         const thoughtText = thoughts[i];
         
-
         users.push({
             username,
             email,
@@ -36,8 +35,6 @@ connection.once('open', async ()=> {
         //user.thoughts.push(thought);
         console.log(`savedUser = ${savedUser}`);
     }
-    // Get some random thought objects using a helper function that we imported from ./data
-    //const thoughts = getRandomThought(3);
 
     // Log out the seed data to indicate what should appear in the db
     console.table(users);
