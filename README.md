@@ -19,12 +19,12 @@ This application requires Node.js, Express.js, and Mongoose packages. Download t
 
 ## Deployed Link
 
-* [Link to Video - Testing User GET routes in Insomnia Core](#)
-* [Link to Video - Testing User POST, PUT, and DELETE routes in Insomnia Core](#)
-* [Link to Video - Testing Friend POST and DELETE routes in Insomnia Core](#)
-* [Link to Video - Testing Thought GET routes in Insomnia Core](#)
-* [Link to Video - Testing Thought POST, PUT, and DELETE routes in Insomnia Core](#)
-* [Link to Video - Testing Reaction POST and DELETE routes in Insomnia Core](#)
+* [Link to Video - Testing User GET routes in Insomnia Core](https://youtu.be/PmXSH1tkLyQ)
+* [Link to Video - Testing User POST, PUT, and DELETE routes in Insomnia Core](https://youtu.be/stZZnDRqg1o)
+* [Link to Video - Testing Friend POST and DELETE routes in Insomnia Core](https://youtu.be/VkScZjpc58M)
+* [Link to Video - Testing Thought GET routes in Insomnia Core](https://youtu.be/eDcI4PqXAWY)
+* [Link to Video - Testing Thought POST, PUT, and DELETE routes in Insomnia Core](https://youtu.be/TPowjQdR6KA)
+* [Link to Video - Testing Reaction POST and DELETE routes in Insomnia Core](https://youtu.be/ruHKBR6uR6E)
 * [Link to Github](https://github.com/MANDYTSANG007/Connections)
 
 ## Design Layout
