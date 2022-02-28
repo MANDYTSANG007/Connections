@@ -3,20 +3,21 @@ const moment = require('moment');
 
 // Set up Reaction, a subdocument schema of Thought
 var reactionSchema = new Schema({
+    /*
     reactionId: {
         // Use Mongoose's ObjectId data type
         type: Schema.Types.ObjectId,
         // Set default value to a new ObjectId
         default: new Types.ObjectId,
-    },
+    },*/
     reactionBody: {
         type: String,
         required: true,
         maxlength: 280,
     },
-    username: {
-        type: String,
-        required: true,
+    author: {
+        type: "ObjectId",
+        ref: "user"
     },
     createdAt: {
         type: Date,

@@ -61,29 +61,36 @@ module.exports = {
             .catch((err)=> res.status(500).json(err));
     },
     addReaction(req, res){
-        /*
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
-            { $addToSet: { reactions: req.body }},
+            { $push: { reactions: req.body } },
             { runValidators: true, new: true }
-        )*/
+        )
+        /*
         Thought.findOne({ _id: req.params.thoughtId })
         .then((thought0) => {
-            thought0.reactions.push()
-            return thought0.save();
+            if (thought0) {
+                thought0.reactions.push({
+                    reactionBody: req.body.reactionBody,
+                    author: req.body.author,
+                })
+                return thought0.save();
+            } else {
+                res.status(404).json({ message: 'No thought with that ID'})
+            }
         })
-
-            .then((thought)=>
-                !thought
-                    ?res.status(404).json({ message: 'No thought with that ID'})
-                    :res.json(thought)
-            )
-            .catch((err)=> res.status(500).json(err));
+        */
+        .then((thought)=>
+            !thought
+                ?res.status(404).json({ message: 'No thought with that ID'})
+                :res.json(thought)
+        )
+        .catch((err)=> res.status(500).json(err));
     },
     deleteReaction(req, res){
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
-            { $pull: { reactions: {reactionId: req.params.reactionId }}},
+            { $pull: { reactions: {_id: req.params.reactionId }}},
             { runValidators: true, new: true }
         )
             .then((thought)=>
