@@ -62,7 +62,7 @@ The following .gif shows the API's POST and DELETE routes for reaction. The rout
 
 ## Authors
 
-* **Mandy Tsang** 
+**Mandy Tsang** 
 
 - [Portfolio](https://mandytsang007.github.io/new-portfolio/)
 - [Github](https://github.com/MANDYTSANG007)
