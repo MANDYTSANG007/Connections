@@ -4,7 +4,7 @@ Connections is a social network API that is built for a social network web appli
 
 ## Getting Started
 
-This application requires Node.js, Express.js, and Mongoose packages. Download the files and install dependencies. To seed data to your database, run node utils/seed. 
+This application requires Node.js, Express.js, and Mongoose packages. Download the files and install dependencies. Seed data to your database by running node utils/seed. 
 
 ## Built With
 
