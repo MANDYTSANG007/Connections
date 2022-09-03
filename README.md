@@ -66,7 +66,6 @@ The following .gif shows the API's POST and DELETE routes for reaction. The rout
 
 - [Portfolio](https://mandytsang007.github.io/new-portfolio/)
 - [Github](https://github.com/MANDYTSANG007)
-- [LinkedIn](https://www.linkedin.com/in/man-tsang-64308b22a/)
 
 
 ## License
